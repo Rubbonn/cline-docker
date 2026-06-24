@@ -99,6 +99,32 @@ convert /tmp/screenshot.png -resize 50% /tmp/small.png
 identify /tmp/screenshot.png   # get image info (size, format, …)
 ```
 
+### playwright-cli — browser automation
+
+Automate browser interactions and test web pages headlessly or on the virtual desktop. This tool is also available as a **skill**, which provides direct structured access to browser automation actions.
+
+Basic usage:
+
+```bash
+# Open a browser and navigate to a page
+playwright-cli open https://example.com
+
+# Take a snapshot of the page (ARIA tree — preferred over screenshots)
+playwright-cli snapshot
+
+# Click an element by its ref from the snapshot
+playwright-cli click e3
+
+# Type text into the focused element
+playwright-cli type "hello world"
+
+# Take a screenshot
+playwright-cli screenshot --filename=/tmp/page.png
+
+# Close the browser
+playwright-cli close
+```
+
 ## Suggested workflow for GUI tasks
 
 1. Launch the target application with `DISPLAY=:0`

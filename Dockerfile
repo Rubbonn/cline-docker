@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y sudo xvfb fluxbox x11vnc xdotool scrot 
     && echo "cline ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 COPY --chown=cline:cline .cline/ /home/cline/.cline/
 ADD https://github.com/novnc/noVNC.git /novnc
+RUN npm install -g @playwright/cli@latest \
+    && (cd /home/cline && gosu cline playwright-cli install --skills agents)
 
 # Setup Cline
 RUN npm install -g cline
