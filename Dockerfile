@@ -14,7 +14,7 @@ ENV \
     CLINE_REASONING='medium'
 
 # Setup environment
-RUN apt update && apt install -y sudo xvfb fluxbox x11vnc xdotool scrot imagemagick jq python3 python3-pip python3-venv websockify gosu \
+RUN apt-get update && apt-get install -y sudo xvfb fluxbox x11vnc xdotool scrot imagemagick jq python3 python3-pip python3-venv websockify gosu \
 	&& useradd -m -s /usr/bin/bash cline \
     && echo "cline ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 COPY --chown=cline:cline .cline/ /home/cline/.cline/
