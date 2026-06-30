@@ -16,7 +16,8 @@ ENV \
 # Setup environment
 RUN apt-get update && apt-get install -y sudo xvfb fluxbox x11vnc xdotool scrot imagemagick jq python3 python3-pip python3-venv websockify gosu \
 	&& useradd -m -s /usr/bin/bash cline \
-    && echo "cline ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    && echo "cline ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+	&& mkdir -p /workspace && chown -R cline:cline /workspace
 COPY --chown=cline:cline .cline/ /home/cline/.cline/
 ADD https://github.com/novnc/noVNC.git /novnc
 RUN npm install -g @playwright/cli@latest \
